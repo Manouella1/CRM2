@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Jonas", "nyhetsbrev": true, "betalat": true },
+  { "id": 2, "name": "Anna", "nyhetsbrev": false, "betalat": true },
+  { "id": 3, "name": "Erik", "nyhetsbrev": true, "betalat": false },
+  { "id": 4, "name": "Sofia", "nyhetsbrev": false, "betalat": false },
+  { "id": 5, "name": "Maria", "nyhetsbrev": true, "betalat": true }
+]

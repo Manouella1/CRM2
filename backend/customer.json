@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "company_id": 101,
+    "name": "Jonas",
+    "phone": "070",
+    "address": "Smörgatan",
+    "email": "jonas@jonas.com"
+  },
+  {
+    "id": 2,
+    "company_id": 102,
+    "name": "Anna",
+    "phone": "071",
+    "address": "Brödgatan",
+    "email": "anna@anna.com"
+  }
+]
