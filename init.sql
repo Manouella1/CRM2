@@ -1,3 +1,18 @@
+-- Ta bort tabellerna om de redan finns
+DROP TABLE IF EXISTS send_Log CASCADE;
+
+DROP TABLE IF EXISTS customer_Tag CASCADE;
+
+DROP TABLE IF EXISTS contact_Log CASCADE;
+
+DROP TABLE IF EXISTS offer CASCADE;
+
+DROP TABLE IF EXISTS customer CASCADE;
+
+DROP TABLE IF EXISTS tag CASCADE;
+
+DROP TABLE IF EXISTS company CASCADE;
+
 -- 1. Skapa Company-tabellen
 CREATE TABLE
   company (
