@@ -13,7 +13,7 @@ const Login: React.FC = () => {
     try {
       const {
         data: { token },
-      } = await axios.post("/api/login", { email, password });
+      } = await axios.post(":3000/api/login", { email, password });
       localStorage.setItem("token", token);
       // Hantera lyckad inloggning, till exempel lagra token i localStorage
       alert("Login successful!");

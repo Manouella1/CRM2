@@ -113,7 +113,6 @@
 
 // export default CustomerSignup;
 
-
 import React, { useState } from "react";
 import axios from "axios";
 import "../style/gpdrModal.css";
@@ -135,7 +134,7 @@ const CustomerSignup: React.FC = () => {
 
     const company_id = 1; // Placeholder, ev gör detta dynamiskt
     try {
-      const response = await axios.post("/api/customers", {
+      const response = await axios.post(":3000/api/customers", {
         company_id,
         name,
         phone,
@@ -354,18 +353,36 @@ const CustomerSignup: React.FC = () => {
       {showGdprModal && (
         <div className="gdpr-modal" onClick={() => setShowGdprModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>Hur vi behandlar dina personuppgifter</h3><br />
-            <div style={{ maxHeight: "300px", overflowY: "scroll", textAlign: "left" }}>
-              <p>Vi samlar in dina personuppgifter för att kunna skicka nyhetserbjudanden och annan relevant information. Dina uppgifter kommer aldrig att delas med tredje part utan ditt uttryckliga medgivande.</p>
+            <h3>Hur vi behandlar dina personuppgifter</h3>
+            <br />
+            <div
+              style={{
+                maxHeight: "300px",
+                overflowY: "scroll",
+                textAlign: "left",
+              }}
+            >
+              <p>
+                Vi samlar in dina personuppgifter för att kunna skicka
+                nyhetserbjudanden och annan relevant information. Dina uppgifter
+                kommer aldrig att delas med tredje part utan ditt uttryckliga
+                medgivande.
+              </p>
               <br />
               <h4>GDPR-Integritetspolicy och Samtycke</h4>
               <br />
               <ol>
                 <li>
-                  <strong>Introduktion:</strong> <br />Vi värnar om din integritet och strävar efter att skydda dina personuppgifter enligt gällande lagstiftning, inklusive Dataskyddsförordningen (GDPR). Denna policy förklarar hur vi samlar in, använder och skyddar dina personuppgifter.
-                </li><br />
+                  <strong>Introduktion:</strong> <br />
+                  Vi värnar om din integritet och strävar efter att skydda dina
+                  personuppgifter enligt gällande lagstiftning, inklusive
+                  Dataskyddsförordningen (GDPR). Denna policy förklarar hur vi
+                  samlar in, använder och skyddar dina personuppgifter.
+                </li>
+                <br />
                 <li>
-                  <strong>Personuppgifter vi samlar in:</strong><br /> Vi kan samla in följande typer av personuppgifter:
+                  <strong>Personuppgifter vi samlar in:</strong>
+                  <br /> Vi kan samla in följande typer av personuppgifter:
                   <ul>
                     <li>Namn</li>
                     <li>Telefonnummer</li>
@@ -375,47 +392,92 @@ const CustomerSignup: React.FC = () => {
                   </ul>
                 </li>
                 <li>
-                  <strong>Syftet med datainsamling:</strong> <br />Vi använder dina personuppgifter för:
+                  <strong>Syftet med datainsamling:</strong> <br />
+                  Vi använder dina personuppgifter för:
                   <ul>
                     <li>Att tillhandahålla och förbättra våra tjänster</li>
                     <li>Kommunikation och kundsupport</li>
-                    <li>Marknadsföringsändamål (med uttryckligt samtycke)</li><br />
+                    <li>Marknadsföringsändamål (med uttryckligt samtycke)</li>
+                    <br />
                   </ul>
                 </li>
                 <li>
-                  <strong>Rättslig grund för behandling av personuppgifter:</strong> <br />Behandlingen av dina personuppgifter baseras på:
+                  <strong>
+                    Rättslig grund för behandling av personuppgifter:
+                  </strong>{" "}
+                  <br />
+                  Behandlingen av dina personuppgifter baseras på:
                   <ul>
-                    <li><strong>Samtycke:</strong> Du har gett ditt samtycke till att vi får behandla dina uppgifter för ett eller flera specifika ändamål.</li>
-                    <li><strong>Fullgörande av avtal:</strong> När det är nödvändigt för att uppfylla ett avtal med dig.</li>
+                    <li>
+                      <strong>Samtycke:</strong> Du har gett ditt samtycke till
+                      att vi får behandla dina uppgifter för ett eller flera
+                      specifika ändamål.
+                    </li>
+                    <li>
+                      <strong>Fullgörande av avtal:</strong> När det är
+                      nödvändigt för att uppfylla ett avtal med dig.
+                    </li>
                   </ul>
                 </li>
                 <li>
-                  <strong>Dina rättigheter enligt GDPR:</strong> Du har följande rättigheter:
+                  <strong>Dina rättigheter enligt GDPR:</strong> Du har följande
+                  rättigheter:
                   <ul>
-                    <li>Rätt till tillgång: Du har rätt att få information om vilka personuppgifter vi behandlar om dig.</li>
-                    <li>Rätt till rättelse: Du har rätt att få felaktiga eller ofullständiga personuppgifter rättade.</li>
-                    <li>Rätt till radering ("rätten att bli glömd"): Du har rätt att begära att vi raderar dina personuppgifter.</li>
-                    <li>Rätt till begränsning av behandling: Du kan begära att vi begränsar behandlingen av dina personuppgifter.</li>
-                    <li>Rätt till dataportabilitet: Du kan få ut de personuppgifter du lämnat i ett strukturerat, allmänt använt och maskinläsbart format.</li>
-                    <li>Rätt att återkalla samtycke: Om behandlingen grundar sig på samtycke kan du när som helst återkalla ditt samtycke.</li>
-                  </ul><br />
+                    <li>
+                      Rätt till tillgång: Du har rätt att få information om
+                      vilka personuppgifter vi behandlar om dig.
+                    </li>
+                    <li>
+                      Rätt till rättelse: Du har rätt att få felaktiga eller
+                      ofullständiga personuppgifter rättade.
+                    </li>
+                    <li>
+                      Rätt till radering ("rätten att bli glömd"): Du har rätt
+                      att begära att vi raderar dina personuppgifter.
+                    </li>
+                    <li>
+                      Rätt till begränsning av behandling: Du kan begära att vi
+                      begränsar behandlingen av dina personuppgifter.
+                    </li>
+                    <li>
+                      Rätt till dataportabilitet: Du kan få ut de
+                      personuppgifter du lämnat i ett strukturerat, allmänt
+                      använt och maskinläsbart format.
+                    </li>
+                    <li>
+                      Rätt att återkalla samtycke: Om behandlingen grundar sig
+                      på samtycke kan du när som helst återkalla ditt samtycke.
+                    </li>
+                  </ul>
+                  <br />
                 </li>
                 <li>
-                  <strong>Samtycke:</strong> Genom att kryssa i rutan "Jag godkänner" eller genom att använda våra tjänster, samtycker du till vår behandling av dina personuppgifter enligt denna policy. Du har rätt att när som helst dra tillbaka ditt samtycke genom att kontakta oss via [kontaktinformation].
+                  <strong>Samtycke:</strong> Genom att kryssa i rutan "Jag
+                  godkänner" eller genom att använda våra tjänster, samtycker du
+                  till vår behandling av dina personuppgifter enligt denna
+                  policy. Du har rätt att när som helst dra tillbaka ditt
+                  samtycke genom att kontakta oss via [kontaktinformation].
                 </li>
                 <li>
-                  <strong>Säkerhet för personuppgifter:</strong> <br />Vi vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter från obehörig åtkomst, förlust, förstöring eller ändring.
+                  <strong>Säkerhet för personuppgifter:</strong> <br />
+                  Vi vidtar lämpliga tekniska och organisatoriska åtgärder för
+                  att skydda dina personuppgifter från obehörig åtkomst,
+                  förlust, förstöring eller ändring.
                 </li>
                 <li>
-                  <strong>Kontakta oss:</strong> <br />Om du har några frågor om vår behandling av dina personuppgifter, vänligen kontakta oss på:
+                  <strong>Kontakta oss:</strong> <br />
+                  Om du har några frågor om vår behandling av dina
+                  personuppgifter, vänligen kontakta oss på:
                   <ul>
                     <li>E-post: [exempel@domän.com]</li>
                     <li>Telefon: [Telefonnummer]</li>
                   </ul>
                 </li>
                 <li>
-                  <strong>Ändringar av denna policy:</strong><br />
-                  Vi förbehåller oss rätten att uppdatera denna policy vid behov. Vi kommer att meddela dig om väsentliga ändringar.
+                  <strong>Ändringar av denna policy:</strong>
+                  <br />
+                  Vi förbehåller oss rätten att uppdatera denna policy vid
+                  behov. Vi kommer att meddela dig om väsentliga ändringar.
                 </li>
               </ol>
             </div>

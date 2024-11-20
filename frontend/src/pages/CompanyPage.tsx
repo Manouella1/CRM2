@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Company } from "../types";
 
-
 const CompanyPage: React.FC = () => {
   const [companyData, setCompanyData] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +9,7 @@ const CompanyPage: React.FC = () => {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await axios.get('/api/companies');
+        const response = await axios.get(":3000/api/companies");
         setCompanyData(response.data);
       } catch (error) {
         console.error("Error fetching companies data:", error);

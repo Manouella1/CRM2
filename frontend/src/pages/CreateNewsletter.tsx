@@ -15,7 +15,7 @@ const NewsletterPage: React.FC = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get("/api/customers");
+        const response = await axios.get(":3000/api/customers");
         setCustomerData(response.data);
       } catch (error) {
         console.error("Error fetching customer data:", error);
@@ -63,7 +63,7 @@ const NewsletterPage: React.FC = () => {
     formData.append("recipients", JSON.stringify(selectedCustomers));
 
     try {
-      await axios.post("/api/newsletters", formData, {
+      await axios.post(":3000/api/newsletters", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

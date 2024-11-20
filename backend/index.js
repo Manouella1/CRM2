@@ -31,13 +31,13 @@ app.get("/", (req, res) => {
 });
 
 // hämta användare från dummy
-app.get("/dummy", (req, res) => {
+app.get(":3000/dummy", (req, res) => {
   console.log(dummy);
 
   res.json(dummy);
 });
 // skapa användarkonto - POST
-app.post("/api/subscribers", (req, res) => {
+app.post(":3000/api/subscribers", (req, res) => {
   const newSubscriber = req.body;
   res
     .status(201)
@@ -45,7 +45,7 @@ app.post("/api/subscribers", (req, res) => {
 });
 
 // /api/customers - GET
-app.get("/api/customers", async (req, res) => {
+app.get(":3000/api/customers", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM customer");
     res.json(result.rows);
@@ -114,7 +114,7 @@ app.loginCompany = async (req, res) => {
 };
 
 // hämta alla företag från Company-tabellen
-app.get("/api/companies", async (req, res) => {
+app.get(":3000/api/companies", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM company");
     res.json(result.rows);
@@ -124,16 +124,19 @@ app.get("/api/companies", async (req, res) => {
   }
 });
 
-
-
-app.delete("/api/customers/delete", async (req, res) => {
+app.delete(":3000/api/customers/delete", async (req, res) => {
   const { email } = req.body;
   try {
-    const result = await pool.query("DELETE FROM customer WHERE email = $1 RETURNING *", [email]);
+    const result = await pool.query(
+      "DELETE FROM customer WHERE email = $1 RETURNING *",
+      [email]
+    );
     if (result.rowCount > 0) {
       res.status(200).send({ message: "Kontot har raderats." });
     } else {
-      res.status(404).send({ message: "Inget konto hittades med den angivna e-posten." });
+      res
+        .status(404)
+        .send({ message: "Inget konto hittades med den angivna e-posten." });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -141,9 +144,8 @@ app.delete("/api/customers/delete", async (req, res) => {
   }
 });
 
-
 // Endpoint för att skapa ett nytt nyhetsbrev
-app.post("/api/offers", async (req, res) => {
+app.post(":3000/api/offers", async (req, res) => {
   const { company_id, type, content } = req.body;
 
   try {
@@ -159,7 +161,7 @@ app.post("/api/offers", async (req, res) => {
 });
 
 // Endpoint för att skicka nyhetsbrev
-app.post("/api/send-newsletter", async (req, res) => {
+app.post(":3000/api/send-newsletter", async (req, res) => {
   const { offer_id, customer_ids } = req.body;
 
   try {
@@ -215,7 +217,6 @@ app.post("/api/send-newsletter", async (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-
 
 // // Skapa en ny post i Company-tabellen
 // app.post("/api/companies", async (req, res) => {

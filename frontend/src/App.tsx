@@ -28,10 +28,9 @@ function App() {
     // Dölj hjärtat efter animationens slut
     setTimeout(() => setHeartVisible(false), 1000);
   };
-  const API_URL = "http://localhost:3000";
 
   useEffect(() => {
-    axios.get(`${API_URL}/dummy`).then((response) => {
+    axios.get("/dummy").then((response) => {
       setDummyData(response.data);
       console.log(response.data);
     });
@@ -39,7 +38,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('/api/customers')
+      .get(":3000/api/customers")
       .then((response) => {
         setCustomerData(response.data);
         console.log("setCustomerData", response.data);
