@@ -31,13 +31,13 @@ app.get("/", (req, res) => {
 });
 
 // hämta användare från dummy
-app.get(":3000/dummy", (req, res) => {
+app.get("/dummy", (req, res) => {
   console.log(dummy);
 
   res.json(dummy);
 });
 // skapa användarkonto - POST
-app.post(":3000/api/subscribers", (req, res) => {
+app.post("/api/subscribers", (req, res) => {
   const newSubscriber = req.body;
   res
     .status(201)
@@ -45,7 +45,7 @@ app.post(":3000/api/subscribers", (req, res) => {
 });
 
 // /api/customers - GET
-app.get(":3000/api/customers", async (req, res) => {
+app.get("/api/customers", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM customer");
     res.json(result.rows);
@@ -114,7 +114,7 @@ app.loginCompany = async (req, res) => {
 };
 
 // hämta alla företag från Company-tabellen
-app.get(":3000/api/companies", async (req, res) => {
+app.get("/api/companies", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM company");
     res.json(result.rows);
@@ -124,7 +124,7 @@ app.get(":3000/api/companies", async (req, res) => {
   }
 });
 
-app.delete(":3000/api/customers/delete", async (req, res) => {
+app.delete("/api/customers/delete", async (req, res) => {
   const { email } = req.body;
   try {
     const result = await pool.query(
@@ -145,7 +145,7 @@ app.delete(":3000/api/customers/delete", async (req, res) => {
 });
 
 // Endpoint för att skapa ett nytt nyhetsbrev
-app.post(":3000/api/offers", async (req, res) => {
+app.post("/api/offers", async (req, res) => {
   const { company_id, type, content } = req.body;
 
   try {
@@ -161,7 +161,7 @@ app.post(":3000/api/offers", async (req, res) => {
 });
 
 // Endpoint för att skicka nyhetsbrev
-app.post(":3000/api/send-newsletter", async (req, res) => {
+app.post("/api/send-newsletter", async (req, res) => {
   const { offer_id, customer_ids } = req.body;
 
   try {
