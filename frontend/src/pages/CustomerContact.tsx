@@ -33,7 +33,7 @@ const CustomerContact: React.FC = () => {
   const handleDeleteSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(":3000/api/customers/delete", {
+      const response = await axios.delete("/api/customers/delete", {
         data: { email },
       });
       if (response.status === 200) {

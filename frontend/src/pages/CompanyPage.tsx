@@ -9,7 +9,7 @@ const CompanyPage: React.FC = () => {
   useEffect(() => {
     const fetchCompany = async () => {
       try {
-        const response = await axios.get(":3000/api/companies");
+        const response = await axios.get("/api/companies");
         setCompanyData(response.data);
       } catch (error) {
         console.error("Error fetching companies data:", error);

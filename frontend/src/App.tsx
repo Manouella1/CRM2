@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(":3000/api/customers")
+      .get("/api/customers")
       .then((response) => {
         setCustomerData(response.data);
         console.log("setCustomerData", response.data);

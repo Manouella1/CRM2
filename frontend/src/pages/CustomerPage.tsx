@@ -11,7 +11,7 @@ const CustomerPage: React.FC = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get(":3000/api/customers");
+        const response = await axios.get("/api/customers");
         setCustomerData(response.data);
       } catch (error) {
         console.error("Error fetching customer data:", error);

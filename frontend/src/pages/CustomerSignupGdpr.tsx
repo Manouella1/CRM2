@@ -134,7 +134,7 @@ const CustomerSignup: React.FC = () => {
 
     const company_id = 1; // Placeholder, ev gör detta dynamiskt
     try {
-      const response = await axios.post(":3000/api/customers", {
+      const response = await axios.post("/api/customers", {
         company_id,
         name,
         phone,
