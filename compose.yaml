@@ -1,0 +1,43 @@
+services:
+  backend:
+    build: backend
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - PGURI=${PGURI}
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    ports:
+      - "80:80" # Endast port 80 exponeras för frontend
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - app-network
+
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./data2:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready --username=postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
